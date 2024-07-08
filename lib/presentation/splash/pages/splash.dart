@@ -21,7 +21,13 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset(AppVectors.logo),
+        child: SizedBox(
+          height: 300,
+          width: 300,
+          child: SvgPicture.asset(
+            AppVectors.logo,
+          ),
+        ),
       ),
     );
   }

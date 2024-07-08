@@ -38,13 +38,13 @@ class AuthPage extends StatelessWidget {
             alignment: Alignment.center,
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 175,
+                vertical: 100,
                 horizontal: 30,
               ),
               child: Column(
                 children: [
                   SvgPicture.asset(AppVectors.logo),
-                  const SizedBox(height: 55),
+                  const SizedBox(height: 20),
                   const Text(
                     "Enjoy listening to music",
                     textAlign: TextAlign.center,
