@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groovy/core/configs/theme/app_colors.dart';
 
 class BasicButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -21,7 +22,7 @@ class BasicButton extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(color: AppColors.lightBackground),
       ),
     );
   }

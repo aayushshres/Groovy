@@ -7,6 +7,7 @@ import 'package:groovy/common/widgets/button/basic_button.dart';
 import 'package:groovy/core/configs/assets/app_images.dart';
 import 'package:groovy/core/configs/assets/app_vectors.dart';
 import 'package:groovy/core/configs/theme/app_colors.dart';
+import 'package:groovy/presentation/auth/pages/auth_page.dart';
 import 'package:groovy/presentation/mode/bloc/theme_cubit.dart';
 
 class ChooseMode extends StatelessWidget {
@@ -132,12 +133,12 @@ class ChooseMode extends StatelessWidget {
                 const SizedBox(height: 100),
                 BasicButton(
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (BuildContext context) => ,
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const AuthPage(),
+                      ),
+                    );
                   },
                   title: "Continue",
                 )
