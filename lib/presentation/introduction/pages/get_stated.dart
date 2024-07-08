@@ -4,6 +4,7 @@ import 'package:groovy/common/widgets/button/basic_button.dart';
 import 'package:groovy/core/configs/assets/app_images.dart';
 import 'package:groovy/core/configs/assets/app_vectors.dart';
 import 'package:groovy/core/configs/theme/app_colors.dart';
+import 'package:groovy/presentation/mode/pages/choose_mode.dart';
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
@@ -18,9 +19,11 @@ class GetStarted extends StatelessWidget {
               vertical: 40,
               horizontal: 40,
             ),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(AppImages.introBG),
+                image: const AssetImage(AppImages.introBG),
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.5), BlendMode.darken),
                 fit: BoxFit.fill,
               ),
             ),
@@ -38,7 +41,7 @@ class GetStarted extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                const SizedBox(height: 21),
+                const SizedBox(height: 20),
                 const Text(
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis enim purus sed phasellus. Cursus ornare id scelerisque aliquam.",
                   textAlign: TextAlign.center,
@@ -50,14 +53,18 @@ class GetStarted extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 BasicButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const ChooseMode(),
+                      ),
+                    );
+                  },
                   title: "Get Started",
                 )
               ],
             ),
-          ),
-          Container(
-            color: Colors.black.withOpacity(0.15),
           ),
         ],
       ),
