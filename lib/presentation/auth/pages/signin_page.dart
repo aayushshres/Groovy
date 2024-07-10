@@ -5,10 +5,10 @@ import 'package:groovy/common/widgets/appbar/app_bar.dart';
 import 'package:groovy/common/widgets/button/basic_button.dart';
 import 'package:groovy/core/configs/assets/app_vectors.dart';
 import 'package:groovy/core/configs/theme/app_colors.dart';
-import 'package:groovy/presentation/auth/pages/signin_page.dart';
+import 'package:groovy/presentation/auth/pages/signup_page.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +37,16 @@ class SignUpPage extends StatelessWidget {
               const SizedBox(height: 15),
               _helpText(),
               const SizedBox(height: 30),
-              _fullNameField(context),
-              const SizedBox(height: 30),
               _emailField(context),
               const SizedBox(height: 30),
               _passwordField(context),
               const SizedBox(height: 30),
               BasicButton(
                 onPressed: () {},
-                title: "Create Account",
+                title: "Sign In",
               ),
               const SizedBox(height: 40),
-              _singinText(context),
+              _singupText(context),
             ],
           ),
         ),
@@ -58,7 +56,7 @@ class SignUpPage extends StatelessWidget {
 
   Widget _registerText() {
     return const Text(
-      "Register",
+      "Sign In",
       textAlign: TextAlign.center,
       style: TextStyle(
         fontWeight: FontWeight.bold,
@@ -92,19 +90,9 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Widget _fullNameField(BuildContext context) {
-    return TextField(
-      decoration: const InputDecoration(hintText: "Full Name")
-          .applyDefaults(Theme.of(context).inputDecorationTheme),
-      cursorColor: context.isDarkMode
-          ? AppColors.lightBackground
-          : AppColors.darkBackground,
-    );
-  }
-
   Widget _emailField(BuildContext context) {
     return TextField(
-      decoration: const InputDecoration(hintText: "Enter Email")
+      decoration: const InputDecoration(hintText: "Enter Username Or Email")
           .applyDefaults(Theme.of(context).inputDecorationTheme),
       cursorColor: context.isDarkMode
           ? AppColors.lightBackground
@@ -122,12 +110,12 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Widget _singinText(BuildContext context) {
+  Widget _singupText(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Do You Have An Account? ",
+          "Not A Member? ",
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
@@ -138,12 +126,12 @@ class SignUpPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => const SignInPage(),
+                builder: (BuildContext context) => const SignUpPage(),
               ),
             );
           },
           child: Text(
-            "Sign In",
+            "Register Now",
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
