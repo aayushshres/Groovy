@@ -1,7 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groovy/core/configs/theme/app_theme.dart';
+import 'package:groovy/firebase_options.dart';
 import 'package:groovy/presentation/introduction/pages/get_stated.dart';
 import 'package:groovy/presentation/mode/bloc/theme_cubit.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -14,6 +16,7 @@ Future<void> main() async {
         ? HydratedStorage.webStorageDirectory
         : await getApplicationDocumentsDirectory(),
   );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
