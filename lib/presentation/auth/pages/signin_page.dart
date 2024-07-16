@@ -5,10 +5,17 @@ import 'package:groovy/common/widgets/appbar/app_bar.dart';
 import 'package:groovy/common/widgets/button/basic_button.dart';
 import 'package:groovy/core/configs/assets/app_vectors.dart';
 import 'package:groovy/core/configs/theme/app_colors.dart';
+import 'package:groovy/data/models/auth/signin_user_req.dart';
+import 'package:groovy/domain/usecases/auth/signin.dart';
 import 'package:groovy/presentation/auth/pages/signup_page.dart';
+import 'package:groovy/presentation/root/pages/root.dart';
+import 'package:groovy/service_locator.dart';
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+  SignInPage({super.key});
+
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +49,28 @@ class SignInPage extends StatelessWidget {
               _passwordField(context),
               const SizedBox(height: 30),
               BasicButton(
-                onPressed: () {},
+                onPressed: () async {
+                  var result = await sl<SigninUseCase>().call(
+                    params: SigninUserReq(
+                      email: _email.text.toString(),
+                      password: _password.text.toString(),
+                    ),
+                  );
+                  result.fold(
+                    (l) {
+                      var snackbar = SnackBar(content: Text(l));
+                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    },
+                    (r) {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const RootPage()),
+                          (route) => false);
+                    },
+                  );
+                },
                 title: "Sign In",
               ),
               const SizedBox(height: 40),
@@ -92,6 +120,7 @@ class SignInPage extends StatelessWidget {
 
   Widget _emailField(BuildContext context) {
     return TextField(
+      controller: _email,
       decoration: const InputDecoration(hintText: "Enter Username Or Email")
           .applyDefaults(Theme.of(context).inputDecorationTheme),
       cursorColor: context.isDarkMode
@@ -102,6 +131,7 @@ class SignInPage extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      controller: _password,
       decoration: const InputDecoration(hintText: "Password")
           .applyDefaults(Theme.of(context).inputDecorationTheme),
       cursorColor: context.isDarkMode
