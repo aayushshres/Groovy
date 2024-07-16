@@ -30,13 +30,13 @@ class SignInPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 70,
-          horizontal: 30,
-        ),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 70,
+            horizontal: 30,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
