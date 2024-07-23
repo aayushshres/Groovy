@@ -8,7 +8,7 @@ import 'package:groovy/core/configs/theme/app_colors.dart';
 import 'package:groovy/data/models/auth/create_user_req.dart';
 import 'package:groovy/domain/usecases/auth/signup.dart';
 import 'package:groovy/presentation/auth/pages/signin_page.dart';
-import 'package:groovy/presentation/root/pages/root.dart';
+import 'package:groovy/presentation/home/pages/home_page.dart';
 import 'package:groovy/service_locator.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -30,12 +30,22 @@ class SignUpPage extends StatelessWidget {
             width: 40,
           ),
         ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.primary,
+            size: 20,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: 70,
+            vertical: 50,
             horizontal: 30,
           ),
           child: Column(
@@ -70,12 +80,51 @@ class SignUpPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  const RootPage()),
+                                  const HomePage()),
                           (route) => false);
                     },
                   );
                 },
                 title: "Create Account",
+              ),
+              const SizedBox(height: 20),
+              SvgPicture.asset(AppVectors.divider),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 60,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        // login with google id
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text(
+                                "Error! Use your email to register."),
+                          ),
+                        );
+                      },
+                      child: SvgPicture.asset(AppVectors.googleLogo),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        // login with apple id
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text(
+                                "Error! Use your email to register."),
+                          ),
+                        );
+                      },
+                      child: SvgPicture.asset(
+                        AppVectors.appleLogo,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 40),
               _singinText(context),

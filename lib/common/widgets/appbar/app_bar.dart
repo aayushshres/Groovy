@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:groovy/core/configs/theme/app_colors.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
+  final Widget? leading;
+  final List<Widget>? actions;
   const BasicAppBar({
     this.title,
+    this.leading,
+    this.actions,
     super.key,
   });
 
@@ -16,16 +19,8 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title ?? Text(""),
       surfaceTintColor: Colors.transparent,
       centerTitle: true,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: const Icon(
-          Icons.arrow_back_ios,
-          color: AppColors.primary,
-          size: 20,
-        ),
-      ),
+      leading: leading,
+      actions: actions,
     );
   }
 
