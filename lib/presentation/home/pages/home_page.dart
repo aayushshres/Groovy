@@ -143,39 +143,50 @@ class _HomePageState extends State<HomePage>
       isScrollable: true,
       indicatorColor: AppColors.primary,
       dividerColor: Colors.transparent,
-      padding: EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
+      tabAlignment: TabAlignment.start,
+      indicatorSize: TabBarIndicatorSize.tab,
       labelColor: context.isDarkMode
           ? AppColors.lightBackground
           : AppColors.darkBackground,
       tabs: [
-        Text(
-          "News",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            "News",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
         ),
-        Text(
-          "Video",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            "Video",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
         ),
-        Text(
-          "Artist",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            "Artist",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
         ),
-        Text(
-          "Podcast",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            "Podcast",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
         ),
       ],
