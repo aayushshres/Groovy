@@ -1,3 +1,3 @@
 # Groovy
 
-Flutter Spotify Clone.
+Flutter Music App.
